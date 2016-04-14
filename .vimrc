@@ -9,7 +9,9 @@ set hlsearch        "Highlight the search term
 
 " Pathogen Configuration
 execute pathogen#infect()
+filetype off
 syntax on
+filetype plugin indent on
 
 "Solarized configuration
 syntax enable
@@ -49,6 +51,8 @@ set tabstop=4
 set shiftwidth=4
 au BufNewFile,BufReadPost *.coffee,*.rb,*.yml,*.yaml,*.js,*.jade setl tabstop=2 shiftwidth=2
 
+let python_highlight_all = 1
+
 set expandtab
 
 filetype on
@@ -67,6 +71,7 @@ endfu
 filetype plugin indent on
 
 "post Pathogen functions
+
 if has("gui_running")
     set guifont=Monaco:h14      "favorite font
     set guioptions-=m           "remove menu bar
@@ -75,7 +80,40 @@ if has("gui_running")
     set fu                      "Goto full screen on mac
 endif
 
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" Shell like behavior(not recommended).
+set completeopt+=longest
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#disable_auto_complete = 1
+inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,.git/*,*/node_modules*/,*/bower_components/*
 
 au BufNewFile,BufRead *.py,*js set colorcolumn=80
