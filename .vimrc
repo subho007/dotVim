@@ -6,6 +6,7 @@ set smartcase       "if camel-cased, dont ignore case
 set incsearch       "instant search
 set nocompatible    "non compatibe
 set hlsearch        "Highlight the search term
+set encoding=utf-8 " set the encoding to utf-8
 
 " Pathogen Configuration
 execute pathogen#infect()
@@ -55,6 +56,7 @@ let python_highlight_all = 1
 
 set expandtab
 
+
 filetype on
 autocmd BufWritePost *.py call Flake8() "apply flake8 as files are saved
 autocmd BufWritePre * :%s/\s\+$//e "Trim the line endings
@@ -80,8 +82,8 @@ if has("gui_running")
     set fu                      "Goto full screen on mac
 endif
 
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
@@ -121,3 +123,25 @@ au BufNewFile,BufRead *.py,*js set colorcolumn=80
 autocmd BufNewFile,BufRead *.cap   set syntax=ruby
 
 let g:templates_directory = '~/.vim/templates'
+
+"NerdTree"
+"=========
+nnoremap <leader>nt :NERDTreeToggle<cr>
+nnoremap <leader>nn :NERDTree<cr>
+
+
+"Vim-airline
+"===========
+let g:airline_theme='wombat'
+let g:airline_powerline_fonts = 0
+"branch parts
+let g:airline#extensions#branch#enabled = 1
+"seperators
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '◀'
+"modes
+let g:airline_section_b="%{fugitive#head()}"
+let g:airline_section_y=""
+"let g:airline_section_gutter=""
+let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#tabline#enabled = 1
