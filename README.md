@@ -18,4 +18,11 @@ Installation:
         brew install macvim --with-cscope --python --HEAD
         brew linkapps    # Put the app in your /Applications directory
 
-2.
+2. Install dotvim using the install.sh script by running it like this
+
+		curl -sS https://raw.githubusercontent.com/subho007/dotvim/master/install.sh | sh
+
+Contributing
+------------
+
+TBD
