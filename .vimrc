@@ -132,7 +132,7 @@ nnoremap <leader>nn :NERDTree<cr>
 
 "Vim-airline
 "===========
-let g:airline_theme='wombat'
+let g:airline_theme='luna'
 let g:airline_powerline_fonts = 0
 "branch parts
 let g:airline#extensions#branch#enabled = 1
