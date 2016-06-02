@@ -121,5 +121,3 @@ au BufNewFile,BufRead *.py,*js set colorcolumn=80
 autocmd BufNewFile,BufRead *.cap   set syntax=ruby
 
 let g:templates_directory = '~/.vim/templates'
-
-au BufNewFile,BufReadPost *.emblem,*.haml,*.py,*.coffee,*.jade set foldmethod=indent
